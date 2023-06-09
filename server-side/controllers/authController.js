@@ -1,6 +1,11 @@
 import passport from 'passport';
+import userModel from '../models/userModel.js';
 
 class AuthController {
+    static signupUser(req, res, next) {
+        userModel.createUser(req.email, req.pwd);
+    }
+
     static loginUser(req, res, next) {
         passport.authenticate('local', {
             failureRedirect: '/login',
